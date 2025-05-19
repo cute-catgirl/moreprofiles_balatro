@@ -1,0 +1,118 @@
+[manifest]
+version = "0.0.1"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''create_tabs(
+        {tabs = {
+            {
+                label = 1,
+                chosen = G.focused_profile == 1,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 1
+            },
+            {
+                label = 2,
+                chosen = G.focused_profile == 2,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 2
+            },
+            {
+                label = 3,
+                chosen = G.focused_profile == 3,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 3
+            }
+        },
+        snap_to_nav = true}),'''
+position = "at"
+payload = '''create_tabs(
+        {tabs = {
+            {
+                label = 1,
+                chosen = G.focused_profile == 1,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 1
+            },
+            {
+                label = 2,
+                chosen = G.focused_profile == 2,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 2
+            },
+            {
+                label = 3,
+                chosen = G.focused_profile == 3,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 3
+            },
+            {
+                label = 4,
+                chosen = G.focused_profile == 4,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 4
+            },
+            {
+                label = 5,
+                chosen = G.focused_profile == 5,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 5
+            },
+            {
+                label = 6,
+                chosen = G.focused_profile == 6,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 6
+            },
+            {
+                label = 7,
+                chosen = G.focused_profile == 7,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 7
+            },
+            {
+                label = 8,
+                chosen = G.focused_profile == 8,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 8
+            },
+            {
+                label = 9,
+                chosen = G.focused_profile == 9,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 9
+            },
+            {
+                label = 10,
+                chosen = G.focused_profile == 10,
+                tab_definition_function = G.UIDEF.profile_option,
+                tab_definition_function_args = 10
+            }
+        },
+        scale_x = 0.5,
+        snap_to_nav = true}),'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''args.tab_alignment = args.tab_alignment or 'cm'
+  args.opt_callback = args.opt_callback or nil
+  args.scale = args.scale or 1'''
+position = "after"
+payload = '''args.tab_alignment = args.tab_alignment or 'cm'
+  args.opt_callback = args.opt_callback or nil
+  args.scale = args.scale or 1
+  args.scale_x = args.scale_x or args.scale or 1
+  args.scale_y = args.scale_y or args.scale or 1'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''tab_buttons[#tab_buttons+1] = UIBox_button({id = 'tab_but_'..(v.label or ''), ref_table = v, button = 'change_tab', label = {v.label}, minh = 0.8*args.scale, minw = 2.5*args.scale, col = true, choice = true, scale = args.text_scale, chosen = v.chosen, func = v.func, focus_args = {type = 'none'}})'''
+position = "at"
+payload = '''tab_buttons[#tab_buttons+1] = UIBox_button({id = 'tab_but_'..(v.label or ''), ref_table = v, button = 'change_tab', label = {v.label}, minh = 0.8*args.scale_y, minw = 2.5*args.scale_x, col = true, choice = true, scale = args.text_scale, chosen = v.chosen, func = v.func, focus_args = {type = 'none'}})'''
+match_indent = true
