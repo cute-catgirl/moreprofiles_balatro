@@ -116,3 +116,11 @@ pattern = '''tab_buttons[#tab_buttons+1] = UIBox_button({id = 'tab_but_'..(v.lab
 position = "at"
 payload = '''tab_buttons[#tab_buttons+1] = UIBox_button({id = 'tab_but_'..(v.label or ''), ref_table = v, button = 'change_tab', label = {v.label}, minh = 0.8*args.scale_y, minw = 2.5*args.scale_x, col = true, choice = true, scale = args.text_scale, chosen = v.chosen, func = v.func, focus_args = {type = 'none'}})'''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''tab_buttons[#tab_buttons+1] = UIBox_button({id = 'tab_but_'..(v.label or ''), ref_table = v, button = 'change_tab', label = {v.label}, minh = 0.8*args.scale, minw = 2.5*args.scale, col = true, choice = true, scale = args.text_scale, chosen = v.chosen, func = v.func, colour = args.colour, focus_args = {type = 'none'}})'''
+position = "at"
+payload = '''tab_buttons[#tab_buttons+1] = UIBox_button({id = 'tab_but_'..(v.label or ''), ref_table = v, button = 'change_tab', label = {v.label}, minh = 0.8*args.scale_y, minw = 2.5*args.scale_x, col = true, choice = true, scale = args.text_scale, chosen = v.chosen, func = v.func, colour = args.colour, focus_args = {type = 'none'}})'''
+match_indent = true
